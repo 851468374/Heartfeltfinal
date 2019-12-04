@@ -2,7 +2,11 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.3'
+gem 'bcrypt', '~> 3.1', '>= 3.1.13'
 
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.5'
+
+gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.1'
 # Use sqlite3 as the database for Active Record

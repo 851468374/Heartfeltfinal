@@ -1,8 +1,8 @@
 class CreateSignins < ActiveRecord::Migration[6.0]
   def change
     create_table :signins do |t|
-      t.integer :stuid
-      t.string :pwd
+      t.string :stuid
+      t.string :password_digest
       t.string :authority
 
       t.timestamps

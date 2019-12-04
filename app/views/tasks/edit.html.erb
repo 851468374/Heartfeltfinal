@@ -1,2 +1,34 @@
-<h1>Tasks#edit</h1>
+<h1>Tasks#编辑页面</h1>
 <p>Find me in app/views/tasks/edit.html.erb</p>
+<div style="width:60%;height:1000px;margin-left:20%;margin-right:20%;background-color:#BC8F8F;">
+  <div style="width:50%;margin-left:25%;height:800px;background-color:#DAA520;text-align: center;">
+    <%= form_for(@task) do |f|%>
+
+    <table style="border:1">
+      <tr>
+        <th><%= f.label :"招募主题" %>
+          <%= f.text_area :theme %></th>
+      </tr>
+      <tr>
+        <td><%= f.label :"发布人学号" %>
+          <%= f.text_area :stuid %></td>
+      </tr>
+      <tr>
+        <td>成都计算应用研究所</td>
+      </tr>
+      <tr>
+        <td>
+          <%= f.label :"内容" %>
+          <%= f.text_area :content %></td>
+      </tr>
+      <tr>
+        <td>
+          <p>招募要求</p>
+          <input type="text" placeholder="请输入要求"></td>
+      </tr>
+    </table>
+      <%=f.submit "发布招募" %>
+  <%end %>
+   </div>
+  </div>
+</div>

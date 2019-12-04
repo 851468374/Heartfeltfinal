@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_02_121806) do
+ActiveRecord::Schema.define(version: 2019_12_03_135741) do
 
   create_table "hotspots", force: :cascade do |t|
     t.string "theme"
@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(version: 2019_12_02_121806) do
   end
 
   create_table "signins", force: :cascade do |t|
-    t.integer "stuid"
-    t.string "pwd"
+    t.string "stuid"
+    t.string "password_digest"
     t.string "authority"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

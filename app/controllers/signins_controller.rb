@@ -1,0 +1,3 @@
+class SigninsController < ApplicationController
+
+end

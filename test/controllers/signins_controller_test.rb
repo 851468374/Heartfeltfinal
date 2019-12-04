@@ -1,7 +1,6 @@
 require 'test_helper'
 
-class SigninTest < ActiveSupport::TestCase
-
+class SigninsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
