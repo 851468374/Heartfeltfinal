@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     if signin && signin.authenticate(params[:session][:pwd])
       user=User.find_by_stuid(params[:session][:stuid].downcase)
     log_in user
-
+    remember user
     redirect_to user
     else
       flash.now[:danger] ='错误的学号/密码'
@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
 
   #注销用户登录
   def destroy
-    log_out
+    log_out if logged_in?
     redirect_to root_url
   end
 end
