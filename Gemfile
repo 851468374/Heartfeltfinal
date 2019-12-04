@@ -6,6 +6,10 @@ gem 'bcrypt', '~> 3.1', '>= 3.1.13'
 
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.5'
 
+gem 'will_paginate', '~> 3.2', '>= 3.2.1'
+
+gem 'bootstrap-will_paginate', '~> 1.0'
+
 gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.1'

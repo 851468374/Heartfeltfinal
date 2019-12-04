@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   end
   def show
     @user= User.find(1)
+    @tasks=@user.tasks.paginate(page: params[:page])
   end
 
   def edit

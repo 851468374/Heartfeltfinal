@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   belongs_to  :signin
-  has_many :tasks
+  has_many :tasks,dependent: :destroy
   attr_accessor :stuid,
                 :name,
                 :age,
@@ -16,6 +16,9 @@ class User < ApplicationRecord
     BCrypt::Password.create(string, cost: cost)
   end
   #生成记忆令牌
+  #
+  #
+  #
   def User.new_token
     SecureRandom.urlsafe_base64
   end
