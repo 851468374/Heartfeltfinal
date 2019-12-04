@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_04_103840) do
+ActiveRecord::Schema.define(version: 2019_12_04_142147) do
 
   create_table "hotspots", force: :cascade do |t|
     t.string "theme"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2019_12_04_103840) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.text "abstract"
     t.index ["user_id", "created_at"], name: "index_tasks_on_user_id_and_created_at"
   end
 

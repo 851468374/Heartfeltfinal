@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  before_action :logged_in_user, only: [ :destroy, :edit]
   def show
   end
 
@@ -6,34 +7,26 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @task=Task.new #创建一个Task的对象，用来存放用户新发布的招募
-    @user=User.find(1)
-  end
-
-  def delete
-  end
-
-  def create
-    @task=Task.new(task_params)
+    @task=current_user.tasks.build if logged_in?
+    @user=User.find_by(id: cookies.signed[:user_id])
+    puts( @user.name)
     if @task.save
-      puts("发布成功")
+      flash[:success] = "课题招募创建成功！"
+      redirect_to @user
     else
       render 'edit'
     end
   end
 
+  def delete
+  end
 
+  def destroy
 
-
-
-
-
+  end
 
   private
   def task_params
     params.require(:task).permit(:theme, :stuid, :content)
   end
-
-
-
 end

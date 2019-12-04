@@ -1,0 +1,15 @@
+<%= form_for(@task) do |f| %>
+  <%=render 'shared/error_messages',object: f.object %>
+  <div class="field">
+    <%= f.label :"主题" %>
+    <%=f.text_field :theme,class: 'form-control',placeholder:"请输入您的招募主题"%>
+    <%= f.text_area :abstract,class: 'form-control',placeholder:"请输入项目简介"%>
+    <%= f.label :"项目简介" %>
+    <%=f.text_area :abstract,class: 'form-control',placeholder:"请输入项目简介"%>
+
+    <%= f.label :"招募要求" %>
+    <%=f.text_area :content,placeholder:"写一些内容"%>
+
+  </div>
+    <%=f.submit "发布",class: "btn btn-primary" %>
+<%end %>

@@ -1,14 +1,10 @@
 class User < ApplicationRecord
   belongs_to  :signin
   has_many :tasks,dependent: :destroy
-  attr_accessor :stuid,
-                :name,
-                :age,
-                :school,
-                :currterm,
-                :email,
-                :tele,
-                :remember_token
+
+
+
+
   #生成哈希摘要
   def User.digest(string)
     cost=ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :

@@ -1,5 +1,5 @@
 <li id="task-<%=task.id%>">
-  <!--<%=link_to gravatar_for(task.user,size:50),task.user %>  显示头像-->
+
   <span class="user"><%= link_to task.user.name,task.user%></span>
   <span class="content"><%=task.content %></span>
   <span class="timestamp"><%= time_ago_in_words(task.created_at) %></span>

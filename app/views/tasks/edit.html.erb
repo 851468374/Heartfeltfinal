@@ -1,10 +1,23 @@
 <h1>Tasks#编辑页面</h1>
 <p>Find me in app/views/tasks/edit.html.erb</p>
+<% if logged_in? %>
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="task_form">
+        <%=render 'shared/task_form' %>
+      </section>
+    </aside>
+  </div>
+  <%else%>
+  <div class="center jumborton">
+    <h1>哈哈哈哈哈哈哈</h1>
+  </div>
+  <%end %>
 <div style="width:60%;height:1000px;margin-left:20%;margin-right:20%;background-color:#BC8F8F;">
   <div style="width:50%;margin-left:25%;height:800px;background-color:#DAA520;text-align: center;">
     <%= form_for(@task) do |f|%>
 
-    <table style="border:1">
+    <table style="border:1px">
       <tr>
         <th><%= f.label :"招募主题" %>
           <%= f.text_area :theme %></th>
