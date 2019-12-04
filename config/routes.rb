@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'users#home'
   get 'sessions/new'
   get 'tasks/show'
   get 'tasks/edit'
