@@ -1,5 +1,4 @@
 <%= form_for(@task) do |f| %>
-  <%=render 'shared/error_messages',object: f.object %>
   <div class="field">
     <%= f.label :"主题" %>
     <%=f.text_field :theme,class: 'form-control',placeholder:"请输入您的招募主题"%>
