@@ -2,9 +2,9 @@
   <div class="field">
     <%= f.label :"主题" %>
     <%=f.text_field :theme,class: 'form-control',placeholder:"请输入您的招募主题"%>
-    <p><%="发布人:"+@user.name%></p>
+    <%= f.hidden_field :stuid, :value => @user.stuid %>
     <p><%="学院:"+@user.school%></p>
-    <%= f.text_area :abstract,class: 'form-control',placeholder:"请输入项目简介"%>
+    <p><%="学院:"+@user.name%></p>
     <%= f.label :"项目简介" %>
     <%=f.text_area :abstract,class: 'form-control',placeholder:"请输入项目简介"%>
 

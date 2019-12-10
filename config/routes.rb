@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   root 'users#home'
   get 'sessions/new'
   get 'tasks/show'
-  get 'tasks/edit'
   get 'tasks/delete'
   get 'tasks/detail'
   get 'users/show'
@@ -10,6 +9,7 @@ Rails.application.routes.draw do
 
   get  '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
+  post '/tasks', to: 'tasks#edit'
   delete '/logout',to: 'sessions#destroy'
   resources :tasks
   resources :users

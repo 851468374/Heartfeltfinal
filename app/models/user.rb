@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   belongs_to  :signin
   has_many :tasks,dependent: :destroy
+  attr_accessor :remember_token
   has_secure_password
 
 

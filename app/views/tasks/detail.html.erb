@@ -1,38 +1,127 @@
 <h1>Tasks#show</h1>
 <h1>课题招募</h1>
 <p>Find me in app/views/tasks/detail.html.erb</p>
-<div style="width:60%;height:1000px;margin-left:20%;margin-right:20%;background-color:#BC8F8F;">
-<div style="width:50%;margin-left:25%;height:800px;background-color:#DAA520;text-align: center;">
-  <table style="margin:0 auto">
-    <tr>
-      <th><h2>关于XXXX比赛的队员招募</h2></th>
-    </tr>
-    <tr>
-      <td>发布人：X同学</td>
-    </tr>
-    <tr>
-      <td>成都计算应用研究所</td>
-    </tr>
-    <tr>
-      <td>
-        <p>比赛介绍</p>
-        <p style=" text-indent:2em">行走在黄昏的雨中，盈一袖飕飕的凉意，然后扯起丝巾，将衣领竖起。
-        白色的油纸伞在雨中盛开，如一朵安静的白莲。这时，有人踏着单车，悠悠地穿过小巷。
-        随身听里传出林俊杰的《江南》，洒落一地。
-        蓝色的雨披，在这样的黄昏，有一种莫名的忧伤。眼前的世界忽然褪去颜色，只剩黑白，歌声中，有一枚金色的叶子悠然而下，
-        带着诗人的落寞，和旅人的孤寂，有一种对家的依恋和低低的叹息。在这幽静的小巷，
-        独自看秋雨把铅华洗净，绵绵的雨，游离在无边无际的梦境之外。</p></td>
-    </tr>
-    <tr>
-      <td>
-        <p>招募要求</p>
-        <p style=" text-indent:2em">“ 海鸥最重情义，心细着呢。前年有一只海鸥，飞离昆明前一天，连连在我帽子上歇落了五次，我以为它是跟我闹着玩，
-          后来才晓得它是跟我告别。它去年没有来，今年也没有来……海鸥是吉祥鸟、幸福鸟！古人说‘白鸥飞处带诗来’，十多年前，海鸥一来，我就知道咱们的福气来了。
-          你看它们那小模样！啧（zé）啧……”海鸥听见老人唤，马上飞了过来，把他团团围住，引得路人都驻足观看。
-          没想到十多天后，忽然有人告诉我们：老人去世了。</p></td>
-    </tr>
-  </table>
-  <div style="float:left;margin-left: 30%"><input type="button" value="我要报名"></div> <div style="float:left;margin-left: 20%"><input type="button" value="再逛逛"></div>
-</div>
+<!-- ###################################################################################################################################-->
+<div class="row">
+  <div class="col-sm-9">
+    <div class="wrapper wrapper-content animated fadeInUp">
+      <div class="ibox">
+        <div class="ibox-content">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="m-b-md">
+                <a href="project_detail.html#" class="btn btn-white btn-xs pull-right">编辑项目</a>
+                <h2>主题主题主题</h2>
+              </div>
+              <dl class="dl-horizontal">
+                <dt>状态：</dt>
+                <dd><span class="label label-primary">进行中</span>
+                </dd>
+              </dl>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-5">
+              <dl class="dl-horizontal">
 
+                <dt>项目经理：</dt>
+                <dd>Beaut-zihan</dd>
+                <dt>消息：</dt>
+                <dd>162</dd>
+                <dt>客户：</dt>
+                <dd><a href="project_detail.html#" class="text-navy"> 百度</a>
+                </dd>
+                <dt>版本：</dt>
+                <dd>v1.4.2</dd>
+              </dl>
+            </div>
+            <div class="col-sm-7" id="cluster_info">
+              <dl class="dl-horizontal">
+
+                <dt>最后更新：</dt>
+                <dd>2014年 11月7日 22:03</dd>
+                <dt>创建于：</dt>
+                <dd>2014年 2月16日 03:01</dd>
+                <dt>团队成员：</dt>
+                <dd class="project-people">
+                  <a href="project_detail.html">
+                    <img alt="image" class="img-circle" src="img/a3.jpg">
+                  </a>
+                  <a href="project_detail.html">
+                    <img alt="image" class="img-circle" src="img/a1.jpg">
+                  </a>
+                  <a href="project_detail.html">
+                    <img alt="image" class="img-circle" src="img/a2.jpg">
+                  </a>
+                  <a href="project_detail.html">
+                    <img alt="image" class="img-circle" src="img/a4.jpg">
+                  </a>
+                  <a href="project_detail.html">
+                    <img alt="image" class="img-circle" src="img/a5.jpg">
+                  </a>
+                </dd>
+              </dl>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <dl class="dl-horizontal">
+                <dt>当前进度</dt>
+                <dd>
+                  <div class="progress progress-striped active m-b-sm">
+                    <div style="width: 60%;" class="progress-bar"></div>
+                  </div>
+                  <small>当前已完成项目总进度的 <strong>60%</strong></small>
+                </dd>
+              </dl>
+            </div>
+          </div>
+          <div class="row m-t-sm">
+            <div class="col-sm-12">
+              <div class="panel blank-panel">
+                <div class="panel-heading">
+                  <div class="panel-options">
+                    <ul class="nav nav-tabs">
+                      <li><a href="project_detail.html#tab-1" data-toggle="tab">招募详情</a>
+                      </li>
+                      <li class=""><a href="project_detail.html#tab-2" data-toggle="tab">已招募到的人</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="panel-body">
+
+                  <div class="tab-content">
+                    <div class="tab-pane active" id="tab-1">
+                      <div class="feed-activity-list">
+                        <div class="feed-element">
+                          <a href="profile.html#" class="pull-left">
+                            <img alt="image" class="img-circle" src="img/a1.jpg">
+                          </a>
+                          <div class="media-body ">
+                            <small class="pull-right text-navy">1天前</small>
+                            <strong>奔波儿灞</strong> 关注了 <strong>灞波儿奔</strong>.
+                            <br>
+                            <small class="text-muted">54分钟前 来自 皮皮时光机</small>
+                            <div class="actions">
+                              <a class="btn btn-xs btn-white"><i class="fa fa-thumbs-up"></i> 赞 </a>
+                              <a class="btn btn-xs btn-danger"><i class="fa fa-heart"></i> 收藏</a>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
