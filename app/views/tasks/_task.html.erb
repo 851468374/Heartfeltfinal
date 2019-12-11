@@ -3,9 +3,9 @@
              <span class="label label-primary">进行中</span>
       </td>
       <td class="project-title">
-              <%= link_to task.theme,tasks_detail_path%>
+              <%= link_to task.theme,tasks_detail_path(taskid: task.id)%>
               <br/>
-                <small>创建时间 <%= time_ago_in_words(task.created_at) %></small>
+                <small>创建时间 <%= time_ago_in_words(task.created_at)%></small>
       </td>
       <td class>
         <div class=" forum-info">

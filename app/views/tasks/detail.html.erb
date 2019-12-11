@@ -3,7 +3,7 @@
 <p>Find me in app/views/tasks/detail.html.erb</p>
 <!-- ###################################################################################################################################-->
 <div class="row">
-  <div class="col-sm-9">
+  <div class="col-md-8 col-md-offset-2">
     <div class="wrapper wrapper-content animated fadeInUp">
       <div class="ibox">
         <div class="ibox-content">
@@ -11,7 +11,7 @@
             <div class="col-sm-12">
               <div class="m-b-md">
                 <a href="project_detail.html#" class="btn btn-white btn-xs pull-right">编辑项目</a>
-                <h2>主题主题主题</h2>
+                <h2 style="color: #0e9aef"><%=@task.theme %></h2>
               </div>
               <dl class="dl-horizontal">
                 <dt>状态：</dt>
@@ -23,43 +23,22 @@
           <div class="row">
             <div class="col-sm-5">
               <dl class="dl-horizontal">
-
-                <dt>项目经理：</dt>
-                <dd>Beaut-zihan</dd>
-                <dt>消息：</dt>
-                <dd>162</dd>
-                <dt>客户：</dt>
-                <dd><a href="project_detail.html#" class="text-navy"> 百度</a>
+                <dt>发布者：</dt>
+                <dd><%=@user.name %></dd>
                 </dd>
-                <dt>版本：</dt>
-                <dd>v1.4.2</dd>
+                <dt>招募人数：</dt>
+                <dd><%=@task.totalnum %> </dd>
+                <dt>已招募：</dt>
+                <dd>12 </dd>
               </dl>
             </div>
             <div class="col-sm-7" id="cluster_info">
               <dl class="dl-horizontal">
 
                 <dt>最后更新：</dt>
-                <dd>2014年 11月7日 22:03</dd>
+                <dd><%=DateTime.parse(@task.updated_at.to_s).strftime('%Y年%m月%d日 %H:%M:%S').to_s%></dd>
                 <dt>创建于：</dt>
-                <dd>2014年 2月16日 03:01</dd>
-                <dt>团队成员：</dt>
-                <dd class="project-people">
-                  <a href="project_detail.html">
-                    <img alt="image" class="img-circle" src="img/a3.jpg">
-                  </a>
-                  <a href="project_detail.html">
-                    <img alt="image" class="img-circle" src="img/a1.jpg">
-                  </a>
-                  <a href="project_detail.html">
-                    <img alt="image" class="img-circle" src="img/a2.jpg">
-                  </a>
-                  <a href="project_detail.html">
-                    <img alt="image" class="img-circle" src="img/a4.jpg">
-                  </a>
-                  <a href="project_detail.html">
-                    <img alt="image" class="img-circle" src="img/a5.jpg">
-                  </a>
-                </dd>
+                <dd><%=DateTime.parse(@task.created_at.to_s).strftime('%Y年%m月%d日 %H:%M:%S').to_s%></dd>
               </dl>
             </div>
           </div>
@@ -91,28 +70,62 @@
                 </div>
 
                 <div class="panel-body">
-
                   <div class="tab-content">
-                    <div class="tab-pane active" id="tab-1">
-                      <div class="feed-activity-list">
-                        <div class="feed-element">
-                          <a href="profile.html#" class="pull-left">
-                            <img alt="image" class="img-circle" src="img/a1.jpg">
-                          </a>
-                          <div class="media-body ">
-                            <small class="pull-right text-navy">1天前</small>
-                            <strong>奔波儿灞</strong> 关注了 <strong>灞波儿奔</strong>.
-                            <br>
-                            <small class="text-muted">54分钟前 来自 皮皮时光机</small>
-                            <div class="actions">
-                              <a class="btn btn-xs btn-white"><i class="fa fa-thumbs-up"></i> 赞 </a>
-                              <a class="btn btn-xs btn-danger"><i class="fa fa-heart"></i> 收藏</a>
-                            </div>
-                          </div>
+                    <div class="tab-pane active " id="tab-1">
+                      <div class="ibox-content">
+                        <div class="well">
+                          <h3 style="color: #0e9aef">招募简介</h3>
+                          <p><h4><%=@task.abstract %></h4></p>
                         </div>
+                        <div class="well well-lg">
+                          <h3 style="color: #0e9aef">招募要求</h3>
+                          <p><h4><%=@task.content %></h4></p>
+                        </div>
+                        <%=form_for(@task_and_user,url: '/apply') do |f| %>
+                          <div class="col-sm-2 col-sm-offset-5">
+                          <%= f.hidden_field :user_id, :value => @user.id %>
+                          <%= f.hidden_field :task_id, :value => @task.id %>
+                            <% if  @verify!=nil && @verify.ispassed==0%>
+                              <button class="btn btn-default btn-lg"  disabled="disabled">已申请</button>
+                              <% elsif(@verify!=nil && @verify.ispassed==1) %>
+                              <button class="btn btn-success btn-lg"  disabled="disabled">已加入</button>
+                              <% else %>
+                              <%=f.submit "报名",class: "btn btn-default btn-lg" %>
+                              <%end %>
+
+                          <% end %>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="tab-pane " id="tab-2">
+                      <div class="ibox-content">
+                        <table class="table">
+                          <thead>
+                          <tr>
+                            <th>序号</th>
+                            <th>姓名</th>
+                            <th>性别</th>
+                            <th>年龄</th>
+                            <th>学院/培养单位</th>
+                            <th>当前学期</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                            <td>1</td>
+                            <td>二师兄</td>
+                            <td>男</td>
+                            <td>24</td>
+                            <td>计算机科学与技术学院</td>
+                            <td>研一</td>
+                          </tr>
+                          </tbody>
+                        </table>
 
                       </div>
                     </div>
+
                   </div>
 
                 </div>

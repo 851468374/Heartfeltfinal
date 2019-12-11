@@ -1,23 +1,30 @@
 <h1>Tasks#编辑页面</h1>
 <p>Find me in app/views/tasks/edit.html.erb</p>
-<div style="width:100%">
+
 
 <% if logged_in? %>
-  <div class="row "  style="margin-left: 25%">
-    <div class="ibox-content">
-      <div class="alert alert-success">
-        <h1>课题招募</h1> <a class="alert-link" href="notifications.html#">了解更多</a>.
+  <div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <div class="ibox float-e-margins">
+
+        <div class="ibox-content">
+          <div class="alert alert-success col-sm-8 col-sm-offset-2" style="text-align: center">
+            <h1>课题招募</h1>
+          </div>
+        </div>
+          <div class="ibox-content">
+          <%=render 'shared/task_form' %>
+          </div>
+        </div>
       </div>
     </div>
-    <aside class="col-md-8">
-      <section class="task_form">
-        <%=render 'shared/task_form' %>
-      </section>
-    </aside>
   </div>
   <%else%>
   <div class="center jumborton">
     <h1>哈哈哈哈哈哈哈</h1>
   </div>
   <%end %>
-</div>
+
+
+

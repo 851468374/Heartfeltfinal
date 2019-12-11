@@ -1,15 +1,69 @@
-<%= form_for(@task) do |f| %>
-  <div class="field">
-    <%= f.label :"主题" %>
+<%= form_for(@task,url: '/edit') do |f|%>
+<div class="form-horizontal">
+  <div class="form-group">
+    <%= f.label :"主题" ,class:'col-sm-2 control-label'%>
+  <div class="col-sm-8">
     <%=f.text_field :theme,class: 'form-control',placeholder:"请输入您的招募主题"%>
-    <%= f.hidden_field :stuid, :value => @user.stuid %>
-    <p><%="学院:"+@user.school%></p>
-    <p><%="学院:"+@user.name%></p>
-    <%= f.label :"项目简介" %>
-    <%=f.text_area :abstract,class: 'form-control',placeholder:"请输入项目简介"%>
-
-    <%= f.label :"招募要求" %>
-    <%=f.text_area :content,placeholder:"写一些内容"%>
   </div>
-    <%=f.submit "发布",class: "btn btn-primary" %>
+  </div>
+  <%= f.hidden_field :stuid, :value => @user.stuid %>
+
+  <div class="hr-line-dashed"></div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label">发布人</label>
+    <div class="col-sm-8">
+      <p class="form-control-static"><%=@user.name%></p>
+    </div>
+  </div>
+
+  <div class="hr-line-dashed"></div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label">学院/培养单位</label>
+    <div class="col-sm-8">
+      <p class="form-control-static"><%=@user.school%></p>
+    </div>
+  </div>
+
+  <div class="hr-line-dashed"></div>
+
+  <div class="form-group">
+    <%= f.label :"项目简介",class:'col-sm-2 control-label'%>
+    <div class="col-sm-8">
+      <%=f.text_area :abstract,class: 'form-control',placeholder:"请输入项目简介"%>
+    </div>
+  </div>
+
+  <div class="hr-line-dashed"></div>
+
+  <div class="form-group">
+    <%= f.label :"招募要求",class:'col-sm-2 control-label'%>
+    <div class="col-sm-8">
+      <%=f.text_area :content,class: 'form-control',placeholder:"请输入相关要求"%>
+    </div>
+  </div>
+
+  <div class="hr-line-dashed"></div>
+
+  <div class="form-group">
+    <%= f.label :"招募人数",class:'col-sm-2 control-label'%>
+    <div class="col-sm-2">
+      <%=f.text_field :totalnum,class: 'form-control',placeholder:"请输入招募人数"%>
+    </div>
+  </div>
+
+  <div class="hr-line-dashed"></div>
+
+  <div class="form-group" >
+    <div class="col-sm-2 col-sm-offset-5">
+      <%=f.submit "发布",class: "btn btn-default btn-lg" %>
+    </div>
+  </div>
+
+
+
+
+
 <%end %>
+</div>

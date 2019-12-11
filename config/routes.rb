@@ -5,12 +5,17 @@ Rails.application.routes.draw do
   get 'tasks/delete'
   get 'tasks/detail'
   get 'users/show'
+  get 'tasks/edit'
   get 'users/edit'
-
   get  '/login', to: 'sessions#new'
+  get 'tasks/edit'
+
+  post  '/apply', to: 'tasks#apply'
+  post '/edit' , to: 'tasks#submit'
   post '/login', to: 'sessions#create'
-  post '/tasks', to: 'tasks#edit'
   delete '/logout',to: 'sessions#destroy'
+
+
   resources :tasks
   resources :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
