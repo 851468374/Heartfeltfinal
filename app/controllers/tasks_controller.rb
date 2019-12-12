@@ -3,11 +3,11 @@ before_action :logged_in_user
 skip_before_action :verify_authenticity_token
   def apply
     @user=User.find_by(id: cookies.signed[:user_id])
-    @task_and_user=current_user.task_and_users.build(task_and_user_params)
+    @task_user=current_user.task_users.build(task_user_params)
 
-    if  TaskAndUser.find_by(task_id: @task_and_user.task_id,user_id:@task_and_user.user_id).nil?
-      @task_and_user.ispassed=0
-      if @task_and_user.save
+    if  TaskUser.find_by(task_id: @task_user.task_id,user_id:@task_user.user_id).nil?
+      @task_user.state=0
+      if @task_user.save
         flash[:success] = "报名成功，请等待发布者通过！"
         redirect_to @user
       else
@@ -28,10 +28,9 @@ skip_before_action :verify_authenticity_token
     @id=params[:taskid]
     @task=Task.find(@id)
     @user=User.find_by(id: cookies.signed[:user_id])
-    @task_and_user=current_user.task_and_users.build
-    @verify=TaskAndUser.find_by(task_id: @task.id,user_id:@user.id)
-    @applicant=TaskAndUser.joins(:users).where("task_id=? and ispassed = 0",@task.id)
-
+    @task_user=current_user.task_users.build
+    @verify=TaskUser.find_by(task_id: @task.id,user_id:@user.id)
+    @applicants=User.joins(:task_users).where("task_id=? and state=0",@task.id)
   end
 
   def submit
@@ -41,6 +40,7 @@ skip_before_action :verify_authenticity_token
       flash[:success] = "课题招募创建成功！"
       redirect_to @user
     else
+      puts ("失败失败失败")
       render 'edit'
     end
   end
@@ -60,9 +60,9 @@ skip_before_action :verify_authenticity_token
 
   private
   def task_params
-      params.require(:task).permit(:theme, :stuid, :content, :abstract, :stuid, :totalnum)
+      params.require(:task).permit(:theme, :stuid, :content, :abstract,  :totalnum)
   end
-  def task_and_user_params
-     params.require(:task_and_user).permit(:user_id, :task_id)
+  def task_user_params
+     params.require(:task_user).permit(:user_id, :task_id)
   end
 end

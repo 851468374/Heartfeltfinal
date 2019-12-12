@@ -1,10 +1,4 @@
-<h1>Tasks#show</h1>
-<h1>课题招募</h1>
-<p>Find me in app/views/tasks/detail.html.erb</p>
-<!-- ###################################################################################################################################-->
-<div class="row">
-  <div class="col-md-8 col-md-offset-2">
-    <div class="wrapper wrapper-content animated fadeInUp">
+<div class="col-md-8 ">
       <div class="ibox">
         <div class="ibox-content">
           <div class="row">
@@ -81,13 +75,13 @@
                           <h3 style="color: #0e9aef">招募要求</h3>
                           <p><h4><%=@task.content %></h4></p>
                         </div>
-                        <%=form_for(@task_and_user,url: '/apply') do |f| %>
+                        <%=form_for(@task_user,url: '/apply') do |f| %>
                           <div class="col-sm-2 col-sm-offset-5">
                           <%= f.hidden_field :user_id, :value => @user.id %>
                           <%= f.hidden_field :task_id, :value => @task.id %>
-                            <% if  @verify!=nil && @verify.ispassed==0%>
+                            <% if  @verify!=nil && @verify.state==0%>
                               <button class="btn btn-default btn-lg"  disabled="disabled">已申请</button>
-                              <% elsif(@verify!=nil && @verify.ispassed==1) %>
+                              <% elsif(@verify!=nil && @verify.state==1) %>
                               <button class="btn btn-success btn-lg"  disabled="disabled">已加入</button>
                               <% else %>
                               <%=f.submit "报名",class: "btn btn-default btn-lg" %>
@@ -105,21 +99,21 @@
                           <tr>
                             <th>序号</th>
                             <th>姓名</th>
-                            <th>性别</th>
                             <th>年龄</th>
                             <th>学院/培养单位</th>
                             <th>当前学期</th>
                           </tr>
                           </thead>
                           <tbody>
+                          <%@applicants.each do |app|%>
                           <tr>
                             <td>1</td>
-                            <td>二师兄</td>
-                            <td>男</td>
-                            <td>24</td>
-                            <td>计算机科学与技术学院</td>
-                            <td>研一</td>
+                            <td><%=app.name %></td>
+                            <td><%=app.age %></td>
+                            <td><%=app.school %></td>
+                            <td><%=app.currterm%></td>
                           </tr>
+                            <%end %>
                           </tbody>
                         </table>
 
@@ -135,6 +129,5 @@
           </div>
         </div>
       </div>
-    </div>
   </div>
-</div>
+

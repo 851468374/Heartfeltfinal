@@ -86,20 +86,68 @@
       <script type="text/javascript">
       </script>
     </div>
-    <% if  logged_in? %>
-    <% link_to "Users","#" %>
-    <p>登录进来了</p>
-    <%= link_to "登出",logout_path,method: :delete %>
-  <% else%>
-    <p>没有登录进来</p>
-  <%end %>
-  <%flash.each do |message_type,message| %>
-    <div class="alert alert -<%=message_type %>"><%=message%></div>
-  <% end %>
+
+    <div class="row wrapper wrapper-content animated fadeInUp">
+      <!-- 个人资料页-->
+      <div class="col-md-2 col-md-offset-1">
+        <div class="ibox float-e-margins">
+          <div class="ibox-title">
+            <h5>个人资料</h5>
+          </div>
+          <div>
+            <div class="ibox-content no-padding border-left-right" style="text-align: center">
+              <%=image_tag("profile_big", size: '200') %>
+            </div>
+            <div class="ibox-content profile-content">
+              <h4><strong><%=@user.name %></strong></h4>
+              <p><i class="fa fa-map-marker"></i> <%=@user.school %></p>
+              <h5>
+                关于我
+              </h5>
+              <p>
+                啥也不会，咸鱼一只，有人要吗？
+              </p>
+              <div class="row m-t-lg">
+                <div class="col-sm-4">
+                  <h5><strong>0</strong> 文章</h5>
+                </div>
+                <div class="col-sm-4">
+                  <h5><strong>0</strong> 关注</h5>
+                </div>
+                <div class="col-sm-4">
+                  <h5><strong>0</strong> 关注者</h5>
+                </div>
+              </div>
+              <div class="user-button">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <button type="button" class="btn btn-primary btn-sm btn-block"><i class="fa fa-calendar-check-o"></i> 我的招募</button>
+                  </div>
+                  <div class="col-sm-6">
+                    <button type="button" class="btn btn-default btn-sm btn-block"><i class="fa fa-smile-o"></i> 我的心声</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% if  logged_in? %>
+          <% link_to "Users","#" %>
+          <p>登录进来了</p>
+          <%= link_to "登出",logout_path,method: :delete %>
+        <% else%>
+          <p>没有登录进来</p>
+        <%end %>
+        <%flash.each do |message_type,message| %>
+          <div class="alert alert -<%=message_type %>"><%=message%></div>
+        <% end %>
+
+      </div>
+      <!-- 个人资料页end-->
   <%= yield %>
-  <%= debug(params) if Rails.env.development? %>
 
-
+    </div>
+    <%= debug(params) if Rails.env.development? %>
   </body>
 </html>
 

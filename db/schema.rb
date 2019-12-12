@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_11_133015) do
+ActiveRecord::Schema.define(version: 2019_12_12_081325) do
 
   create_table "hotspots", force: :cascade do |t|
     t.string "theme"
@@ -29,12 +29,12 @@ ActiveRecord::Schema.define(version: 2019_12_11_133015) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "task_and_users", force: :cascade do |t|
+  create_table "task_users", force: :cascade do |t|
     t.integer "task_id"
     t.integer "user_id"
+    t.integer "state"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "ispassed"
   end
 
   create_table "tasks", force: :cascade do |t|
