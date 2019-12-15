@@ -57,14 +57,18 @@
                     <ul class="nav nav-tabs">
                       <li><a href="project_detail.html#tab-1" data-toggle="tab">招募详情</a>
                       </li>
-                      <li class=""><a href="project_detail.html#tab-2" data-toggle="tab">已招募到的人</a>
-                      </li>
+                      <% if @user.id==@task.user_id %>
+                        <li><a href="project_detail.html#tab-3" data-toggle="tab">查看申请者</a></li>
+                        <%else %>
+                      <li><a href="project_detail.html#tab-2" data-toggle="tab">已招募到的人</a></li>
+                        <%end %>
                     </ul>
                   </div>
                 </div>
 
                 <div class="panel-body">
                   <div class="tab-content">
+                    <!-- 招募详情页面-->
                     <div class="tab-pane active " id="tab-1">
                       <div class="ibox-content">
                         <div class="well">
@@ -79,11 +83,11 @@
                           <div class="col-sm-2 col-sm-offset-5">
                           <%= f.hidden_field :user_id, :value => @user.id %>
                           <%= f.hidden_field :task_id, :value => @task.id %>
-                            <% if  @verify!=nil && @verify.state==0%>
+                            <% if  @verify!=nil && @verify.state==0 && @task.user_id !=@user.id%>
                               <button class="btn btn-default btn-lg"  disabled="disabled">已申请</button>
-                              <% elsif(@verify!=nil && @verify.state==1) %>
+                              <% elsif(@verify!=nil && @verify.state==1 && @task.user_id !=@user.id) %>
                               <button class="btn btn-success btn-lg"  disabled="disabled">已加入</button>
-                              <% else %>
+                              <% elseif( @task.user_id !=@user.id) %>
                               <%=f.submit "报名",class: "btn btn-default btn-lg" %>
                               <%end %>
 
@@ -91,7 +95,7 @@
                         </div>
                       </div>
                     </div>
-
+                    <!-- 查看招募者（申请者看到的页面）-->
                     <div class="tab-pane " id="tab-2">
                       <div class="ibox-content">
                         <table class="table">
@@ -114,6 +118,40 @@
                             <td><%=app.currterm%></td>
                           </tr>
                             <%end %>
+                          </tbody>
+                        </table>
+
+                      </div>
+                    </div>
+                    <!-- 查看申请者（招募发起者看到的页面）-->
+                    <div class="tab-pane " id="tab-3">
+                      <div class="ibox-content">
+                        <table class="table">
+                          <thead>
+                          <tr>
+                            <th>序号</th>
+                            <th>姓名</th>
+                            <th>年龄</th>
+                            <th>学院/培养单位</th>
+                            <th>当前学期</th>
+                            <th>申请状态</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <%@applicants.each do |app|%>
+                            <tr>
+                              <td>1</td>
+                              <td><%=app.name %></td>
+                              <td><%=app.age %></td>
+                              <td><%=app.school %></td>
+                              <td><%=app.currterm%></td>
+                              <% if app.state ==0 %>
+                              <td>  <%= link_to "同意",tasks_permit_path(task_id: app.task_id,user_id: app.user_id,state: app.state),class:'btn btn-primary'%></td>
+                                <% elsif app.state==1%>
+                                <td> <%= link_to "不同意",tasks_permit_path(task_id: app.task_id,user_id: app.user_id,state: app.state),class:'btn btn-primary'%></td>
+                                <%end %>
+                            </tr>
+                          <%end %>
                           </tbody>
                         </table>
 

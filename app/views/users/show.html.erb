@@ -1,2 +1,42 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="col-sm-8">
+  <div class="panel blank-panel">
+    <div class="panel-heading">
+      <div class="panel-options">
+        <ul class="nav nav-tabs">
+          <li><a href="project_detail.html#tab-1" data-toggle="tab">我的招募</a>
+          </li>
+          <li class=""><a href="project_detail.html#tab-2" data-toggle="tab">我的申请</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="panel-body">
+      <div class="tab-content">
+        <div class="tab-pane active " id="tab-1">
+          <div class="ibox-content">
+            <table class="table table-hover">
+              <tbody>
+              <% if @user.tasks.any? %>
+                <h3>总数：(<%=@user.tasks.count %></h3>
+                <%=render @tasks %>
+                </tbody>
+                </table>
+                <div style="width:100%;text-align: center">
+                  <%= will_paginate @tasks %>
+                </div>
+          </div>
+                <%end %>
+        </div>
+
+        <div class="tab-pane " id="tab-2">
+          <div class="ibox-content">
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>

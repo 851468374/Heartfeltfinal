@@ -89,7 +89,7 @@
 
     <div class="row wrapper wrapper-content animated fadeInUp">
       <!-- 个人资料页-->
-      <div class="col-md-2 col-md-offset-1">
+      <div class="col-md-2 col-md-offset-1 ">
         <div class="ibox float-e-margins">
           <div class="ibox-title">
             <h5>个人资料</h5>
@@ -99,6 +99,7 @@
               <%=image_tag("profile_big", size: '200') %>
             </div>
             <div class="ibox-content profile-content">
+              <%@user=User.find_by(id: cookies.signed[:user_id])%>
               <h4><strong><%=@user.name %></strong></h4>
               <p><i class="fa fa-map-marker"></i> <%=@user.school %></p>
               <h5>

@@ -4,6 +4,8 @@ class UsersController < ApplicationController
     
   end
   def show
+    @user=User.find_by(id: cookies.signed[:user_id])
+    @tasks=@user.tasks.paginate(page: params[:page],per_page: 10)
   end
 
   def edit

@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get  '/login', to: 'sessions#new'
   get 'tasks/edit'
 
+  get 'tasks/permit'
+
   post  '/apply', to: 'tasks#apply'
   post '/edit' , to: 'tasks#submit'
   post '/login', to: 'sessions#create'

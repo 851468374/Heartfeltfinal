@@ -2401,14 +2401,14 @@ table.dataTable thead .sorting:after {
 }
 
 .onoffswitch-inner:before {
-    content: "ON";
+    content: "通过";
     padding-left: 7px;
     background-color: #23b7e5;
     color: #FFFFFF;
 }
 
 .onoffswitch-inner:after {
-    content: "OFF";
+    content: "未通过";
     padding-right: 7px;
     background-color: #FFFFFF;
     color: #919191;
