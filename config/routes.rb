@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'users#home'
+  root 'users#show'
   get 'sessions/new'
   get 'tasks/show'
   get 'tasks/delete'
@@ -7,12 +7,13 @@ Rails.application.routes.draw do
   get 'users/show'
   get 'tasks/edit'
   get 'users/edit'
-  get  '/login', to: 'sessions#new'
-  get 'tasks/edit'
+  get 'sessions/register'
 
   get 'tasks/permit'
 
+  post '/register_submit',to: 'sessions#register_submit'
   post  '/apply', to: 'tasks#apply'
+  patch '/edit' , to: 'tasks#submit'
   post '/edit' , to: 'tasks#submit'
   post '/login', to: 'sessions#create'
   delete '/logout',to: 'sessions#destroy'

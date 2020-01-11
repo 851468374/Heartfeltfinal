@@ -22,8 +22,6 @@ class TasksController < ApplicationController
     if  TaskUser.find_by(task_id: @task_user.task_id,user_id:@task_user.user_id).nil?
       @task_user.state=0
       if @task_user.save
-        format.html { redirect_to @post, notice: '成功申请，请等待对方同意' }
-        format.js
         flash[:success] = "报名成功，请等待发布者通过！"
         redirect_to @user
       else
@@ -37,7 +35,7 @@ class TasksController < ApplicationController
 
   def show
     @user= User.find_by(id: cookies.signed[:user_id])
-    @tasks=@user.tasks.paginate(page: params[:page],per_page: 10)
+    @tasks=Task.all.paginate(page: params[:page],per_page: 10)
   end
 
   def detail
@@ -69,7 +67,7 @@ class TasksController < ApplicationController
   def submit
     @user=User.find_by(id: cookies.signed[:user_id])
     @task=current_user.tasks.build(task_params)
-    if @task.save
+    if  @task.save
       flash[:success] = "课题招募创建成功！"
       redirect_to @user
     else

@@ -23,8 +23,8 @@
 
             <table class="table table-hover">
               <tbody>
-              <% if @user.tasks.any? %>
-                <h3>招募(<%=@user.tasks.count %></h3>
+              <% if @tasks.any? %>
+                <h3>招募(<%=@tasks.count %></h3>
                 <%=render @tasks %>
                 </tbody>
                 </table>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> - 注册</title>
+
+
+
+</head>
+
+<body class="gray-bg">
+
+<div class="middle-box text-center loginscreen   animated fadeInDown">
+  <div>
+    <div >
+
+      <h1 class="logo-name">HeartFelt</h1>
+
+    </div>
+    <h3>欢迎注册 HeartFelt</h3>
+    <p>创建一个HeartFelt新账户</p>
+    <%=form_for(@signin,url:'/register_submit') do |s| %>
+      <div class="form-group">
+        <%=s.text_field :stuid,class: 'form-control',placeholder:"请输入学号"%>
+      </div>
+      <%= s.hidden_field :authority, :value => 'stu' %>
+      <div class="form-group">
+        <%=s.password_field :password,class: 'form-control pword m-b',placeholder:"请输入密码" %>
+      </div>
+      <div class="form-group">
+        <%=s.password_field :password_confirmation,class: 'form-control pword m-b',placeholder:"请再次输入密码" %>
+      </div>
+      <%=s.submit "注 册",class: "btn btn-primary block full-width m-b" %>
+
+      <p class="text-muted text-center"><small>已经有账户了？</small><a href="login.html">点此登录</a>
+      </p>
+    <%end %>
+  </div>
+</div>
+</body>
+
+</html>

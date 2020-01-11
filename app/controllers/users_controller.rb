@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-
+  @user=User.find_by(id: cookies.signed[:user_id])
   end
 
   def create

@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :tasks,dependent: :destroy
   has_many :task_users
   attr_accessor :remember_token
+  validates_uniqueness_of :stuid
   has_secure_password
 
 
