@@ -8,8 +8,10 @@ class TasksController < ApplicationController
     @task=TaskUser.find_by(task_id: @id)
     if @state == '0'
       @task.update(state: 1)
+      redirect_to tasks_detail_path(taskid:@id)
     elsif @state == '1'
       @task.update(state: 0)
+      redirect_to tasks_detail_path(taskid:@id)
     end
 
   end
@@ -83,6 +85,13 @@ class TasksController < ApplicationController
   end
 
   def delete
+    @taskid=params[:task_id]
+    @task=Task.find(@taskid)
+    if @task.destroy
+      redirect_to controller: 'admin',action: 'show'
+    else
+      render controller: 'admin',action: 'show'
+    end
   end
 
   def destroy

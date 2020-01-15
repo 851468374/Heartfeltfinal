@@ -24,40 +24,14 @@
         <ul class="nav sidebar-nav">
           <li class="sidebar-brand">
             <a href="#">
-              Bootstrap 3
+              菜单
             </a>
           </li>
           <li>
-            <a href="#"><i class="fa fa-fw fa-home"></i> Home</a>
+           <i class="fa fa-fw fa-home"></i> <%=link_to '主页',tasks_show_path %>
           </li>
           <li>
-            <a href="#"><i class="fa fa-fw fa-folder"></i> Page one</a>
-          </li>
-          <li>
-            <a href="#"><i class="fa fa-fw fa-file-o"></i> Second page</a>
-          </li>
-          <li>
-            <a href="#"><i class="fa fa-fw fa-cog"></i> Third page</a>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i> Dropdown <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-              <li class="dropdown-header">Dropdown heading</li>
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li><a href="#">Separated link</a></li>
-              <li><a href="#">One more separated link</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#"><i class="fa fa-fw fa-bank"></i> Page four</a>
-          </li>
-          <li>
-            <a href="#"><i class="fa fa-fw fa-dropbox"></i> Page 5</a>
-          </li>
-          <li>
-            <a href="#"><i class="fa fa-fw fa-twitter"></i> Last page</a>
+           <i class="fa fa-fw fa-folder"></i> <%=link_to '个人信息 ',users_edit_path %>
           </li>
         </ul>
       </nav>
@@ -86,8 +60,36 @@
       <script type="text/javascript">
       </script>
     </div>
-
     <div class="row wrapper wrapper-content animated fadeInUp">
+    <%@check=User.find_by(id: cookies.signed[:user_id] ) %>
+    <% @authority=Signin.find_by_stuid(@check.stuid) %>
+    <% if @authority.authority=="admin"%>
+        <div class="col-md-2 col-md-offset-1 ">
+          <div class="ibox float-e-margins">
+            <div class="ibox-title">
+              <h5>个人资料</h5>
+            </div>
+            <div>
+              <div class="ibox-content no-padding border-left-right" style="text-align: center">
+                <%=image_tag("profile_big", size: '200') %>
+              </div>
+              <div class="ibox-content profile-content">
+                <%@user=User.find_by(id: cookies.signed[:user_id])%>
+                <h4><strong><%=@user.name %></strong></h4>
+                <p><i class="fa fa-map-marker"></i> <%=@user.school %></p>
+                <h5>
+                  管理员
+                </h5>
+              </div>
+            </div>
+          </div>
+          <% if  logged_in? %>
+            <% link_to "Users","#" %>
+            <%= link_to "登出",logout_path,method: :delete %>
+          <%end %>
+        </div>
+    <%elsif @authority.authority=="stu"%>
+
       <!-- 个人资料页-->
       <div class="col-md-2 col-md-offset-1 ">
         <div class="ibox float-e-margins">
@@ -103,29 +105,11 @@
               <h4><strong><%=@user.name %></strong></h4>
               <p><i class="fa fa-map-marker"></i> <%=@user.school %></p>
               <h5>
-                关于我
+                学生
               </h5>
-              <p>
-                啥也不会，咸鱼一只，有人要吗？
-              </p>
-              <div class="row m-t-lg">
-                <div class="col-sm-4">
-                  <h5><strong>0</strong> 文章</h5>
-                </div>
-                <div class="col-sm-4">
-                  <h5><strong>0</strong> 关注</h5>
-                </div>
-                <div class="col-sm-4">
-                  <h5><strong>0</strong> 关注者</h5>
-                </div>
-              </div>
               <div class="user-button">
                 <div class="row">
-                  <div class="col-sm-6">
-                    <button type="button" class="btn btn-primary btn-sm btn-block"><i class="fa fa-calendar-check-o"></i> 我的招募</button>
-                  </div>
-                  <div class="col-sm-6">
-                    <button type="button" class="btn btn-default btn-sm btn-block"><i class="fa fa-smile-o"></i> 我的心声</button>
+                  <div class="col-sm-6"><%=link_to "我的招募",users_show_url%>
                   </div>
                 </div>
               </div>
@@ -134,7 +118,6 @@
         </div>
         <% if  logged_in? %>
           <% link_to "Users","#" %>
-          <p>登录进来了</p>
           <%= link_to "登出",logout_path,method: :delete %>
         <% else%>
           <p>没有登录进来</p>
@@ -144,11 +127,10 @@
         <% end %>
 
       </div>
+  <%end %>
       <!-- 个人资料页end-->
   <%= yield %>
-
     </div>
-    <%= debug(params) if Rails.env.development? %>
   </body>
 </html>
 

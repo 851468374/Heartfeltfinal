@@ -148,7 +148,7 @@
                               <% if app.state ==0 %>
                               <td>  <%= link_to "同意",tasks_permit_path(task_id: app.task_id,user_id: app.user_id,state: app.state),class:'btn btn-primary'%></td>
                                 <% elsif app.state==1%>
-                                <td> <%= link_to "不同意",tasks_permit_path(task_id: app.task_id,user_id: app.user_id,state: app.state),class:'btn btn-primary'%></td>
+                                <td> <%= link_to "取消同意",tasks_permit_path(task_id: app.task_id,user_id: app.user_id,state: app.state),class:'btn btn-primary'%></td>
                                 <%end %>
                             </tr>
                           <%end %>

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  root 'users#show'
+  get 'admin/show'
+  get 'admin/delete'
+  root 'sessions#new'
   get 'sessions/new'
   get 'tasks/show'
   get 'tasks/delete'
@@ -8,6 +10,7 @@ Rails.application.routes.draw do
   get 'tasks/edit'
   get 'users/edit'
   get 'sessions/register'
+  get 'task_users/show'
 
   get 'tasks/permit'
 
@@ -16,6 +19,8 @@ Rails.application.routes.draw do
   patch '/edit' , to: 'tasks#submit'
   post '/edit' , to: 'tasks#submit'
   post '/login', to: 'sessions#create'
+  post '/editinfo', to:'users#submit_edit'
+  patch '/editinfo', to: 'users#submit_edit'
   delete '/logout',to: 'sessions#destroy'
 
 

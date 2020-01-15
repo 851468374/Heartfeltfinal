@@ -1,12 +1,10 @@
 class User < ApplicationRecord
-  belongs_to  :signin
+  belongs_to  :signin,optional: true
   has_many :tasks,dependent: :destroy
   has_many :task_users
   attr_accessor :remember_token
+  validates :name,:age,:school,:currterm,:email ,presence: { message: "请填写需要填写的信息" }
   validates_uniqueness_of :stuid
-  has_secure_password
-
-
 
   #生成哈希摘要
   def User.digest(string)

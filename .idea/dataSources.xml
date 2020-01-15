@@ -10,5 +10,11 @@
         <property name="enable_load_extension" value="true" />
       </driver-properties>
     </data-source>
+    <data-source source="LOCAL" name="development [2]" uuid="e255dc3c-b542-4252-9128-4162d496f954">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\Administrator\RubymineProjects\Heartfelt\db\development.sqlite3</jdbc-url>
+    </data-source>
   </component>
 </project>

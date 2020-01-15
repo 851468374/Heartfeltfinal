@@ -1,8 +1,6 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
@@ -25,9 +23,9 @@
         <%=f.password_field :pwd,class: 'form-control pword m-b',placeholder:"密码" %>
       </div>
       <%=f.submit "登录",class: "btn btn-primary" %>
-      <p class="text-muted text-center"> <a href="login.html#"><small>忘记密码了？</small></a> | <a href="register.html">注册一个新账号</a>
       </p>
     <%end %>
+    <%= link_to "注册一个账号",sessions_register_url%>
   </div>
 </div>
 

@@ -27,13 +27,12 @@
         <div class="forum-info">
           <span class="views-number">创建者 </span>
           <div>
-            <small><%= link_to task.user.name,task.user%></small>
+            <small><%= task.user.name%></small>
           </div>
         </div>
       </td>
       <td class="project-actions">
-        <a href="projects.html#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> 查看 </a>
-        <a href="projects.html#" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> 编辑 </a>
+        <i class="fa fa-folder"></i><%=link_to '查看',tasks_detail_path(taskid:task.id),class: "btn btn-white btn-sm" %>
       </td>
  </tr>
 
