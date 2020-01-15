@@ -1,0 +1,36 @@
+<div class="col-md-8 ">
+  <div class="ibox float-e-margins">
+    <div class="ibox-title">
+      <div class="ibox-tools">
+        <a class="close-link">
+          <i class="fa fa-times"></i>
+        </a>
+      </div>
+    </div>
+    <div class="ibox-content">
+
+      <table class="table">
+        <thead>
+        <tr>
+          <th>编号</th>
+          <th>招募主题</th>
+          <th>发起人</th>
+          <th>创建时间</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @tasks.each do |f| %>
+        <tr>
+          <td><%=f.id %></td>
+          <td><%=f.theme %></td>
+          <td><%=f.name %></td>
+          <td><%=f.created_at %></td>
+          <td><%= link_to "删除",tasks_delete_path(task_id: f.id)%></td>
+        </tr>
+          <%end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
